@@ -555,7 +555,7 @@ MonoBehaviour:
   _width: 0.34
   _height: 0.5
   _color: {r: 0.9411765, g: 0.9411765, b: 0.9529412, a: 0.11372549}
-  _borderColor: {r: 0.3019608, g: 0.29411766, b: 0.28235295, a: 0.31764707}
+  _borderColor: {r: 0.3019608, g: 0.29411766, b: 0.28235295, a: 0.43137255}
   _radiusTopLeft: 0.02
   _radiusTopRight: 0.015
   _radiusBottomLeft: 0.015
@@ -1640,7 +1640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ovrCameraRig: {fileID: 0}
-  distanceFromHeadset: 0.5
+  distanceFromHeadset: 0.7
 --- !u!1 &8690321564538589227
 GameObject:
   m_ObjectHideFlags: 0

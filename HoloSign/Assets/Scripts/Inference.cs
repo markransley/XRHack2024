@@ -7,29 +7,40 @@ public class Inference : MonoBehaviour
 {
 	public OVRSkeleton leftHandSkeleton;
 	public OVRSkeleton rightHandSkeleton;
+	public Transform hmdTransform;
 
 	public string GestureID;
 
-	public ModelAsset modelAsset;
-	private Model model;
+	public ModelAsset oneHandModelAsset;
+	public ModelAsset twoHandModelAsset;
+	private Model oneHandModel;
+	private Model twoHandModel;
 	//private string modelPath = "model.onnx";
-	private IWorker engine;
+	private IWorker oneHandEngine;
+	private IWorker twoHandEngine;
 
 
-	string[] gestures = {"1", "2", "3", "4", "5", "6", "7", "8", "A", "B", "C", "D", "E", "F", "G", "H" };
+	string[] oneHandGestures = { "1", "2", "3", "4", "5", "6", "7", "8", "C" };
+	string[] twoHandGestures = { "A", "B", "D", "E", "F", "G", "H" };
 
 	void Start()
-    {
-		model = ModelLoader.Load(modelAsset);
-		engine = WorkerFactory.CreateWorker(BackendType.GPUCompute, model);
+	{
+		oneHandModel = ModelLoader.Load(oneHandModelAsset);
+		oneHandEngine = WorkerFactory.CreateWorker(BackendType.GPUCompute, oneHandModel);
+		twoHandModel = ModelLoader.Load(twoHandModelAsset);
+		twoHandEngine = WorkerFactory.CreateWorker(BackendType.GPUCompute, twoHandModel);
 	}
 
-    void Update()
-    {
+	void Update()
+	{
 		if (leftHandSkeleton != null && leftHandSkeleton.IsInitialized && rightHandSkeleton != null && rightHandSkeleton.IsInitialized)
 		{
 			HandSerializationNode hs = PoseSerializer.SerializePose(leftHandSkeleton, rightHandSkeleton);
-			float[] ps = new float[]
+
+
+			if (leftHandSkeleton.IsDataValid && rightHandSkeleton.IsDataValid && HandIsNearHMD(rightHandSkeleton) && HandsAreClose())
+			{
+				float[] ps = new float[]
 			{
 				hs.leftHandStartPosition.x, hs.leftHandStartPosition.y, hs.leftHandStartPosition.z,
 				hs.leftHandForearmStubPosition.x, hs.leftHandForearmStubPosition.y, hs.leftHandForearmStubPosition.z,
@@ -84,52 +95,127 @@ public class Inference : MonoBehaviour
 				hs.rightHandPinkyTipPosition.x, hs.rightHandPinkyTipPosition.y, hs.rightHandPinkyTipPosition.z
 			};
 
-			//Debug.Log(ps.Length);
-			
+				//Debug.Log(ps.Length);
 
-			TensorShape ts = new TensorShape(1, ps.Length);
-			
-			TensorFloat inputTensor = new TensorFloat(ts, ps);
 
-			engine.Execute(inputTensor);
-			TensorFloat outputTensor = engine.PeekOutput() as TensorFloat;
+				TensorShape ts = new TensorShape(1, ps.Length);
 
-			outputTensor.MakeReadable();
-			//outputTensor.PrintDataPart(8);
-			float[] logits = new float[outputTensor.shape[1]];
+				TensorFloat inputTensor = new TensorFloat(ts, ps);
 
-			for (int i = 0; i < logits.Length; i++)
-			{
-				logits[i] = outputTensor[i];
-			}
+				twoHandEngine.Execute(inputTensor);
+				TensorFloat outputTensor = twoHandEngine.PeekOutput() as TensorFloat;
 
-			float[] probabilities = Softmax(logits);
+				outputTensor.MakeReadable();
+				//outputTensor.PrintDataPart(8);
+				float[] logits = new float[outputTensor.shape[1]];
 
-			string probLog = "";
-			for (int i = 0; i < probabilities.Length; i++)
-			{
-				probLog += probabilities[i] + "\n";
-			}
-
-			//Debug.Log(probLog);
-
-			int maxIndex = 0;
-			float maxVal = float.MinValue;
-			for (int i = 0; i < probabilities.Length; i++)
-			{
-				if (outputTensor[i] > maxVal)
+				for (int i = 0; i < logits.Length; i++)
 				{
-					maxVal = outputTensor[i];
-					maxIndex = i;
+					logits[i] = outputTensor[i];
 				}
+
+				float[] probabilities = Softmax(logits);
+
+				string probLog = "";
+				for (int i = 0; i < probabilities.Length; i++)
+				{
+					probLog += probabilities[i] + "\n";
+				}
+
+				//Debug.Log(probLog);
+
+				int maxIndex = 0;
+				float maxVal = float.MinValue;
+				for (int i = 0; i < probabilities.Length; i++)
+				{
+					if (outputTensor[i] > maxVal)
+					{
+						maxVal = outputTensor[i];
+						maxIndex = i;
+					}
+				}
+
+				Debug.Log(twoHandGestures[maxIndex] + " " + probabilities[maxIndex]);
+
+				GestureID = twoHandGestures[maxIndex];
+				outputTensor.Dispose();
 			}
 
-			Debug.Log(gestures[maxIndex] + " " + probabilities[maxIndex]);
+			if (rightHandSkeleton.IsDataValid && HandIsNearHMD(rightHandSkeleton) && HandIsFarHMD(leftHandSkeleton))
+			{
+				float[] ps = new float[]
+			{
+				hs.rightHandStartPosition.x, hs.rightHandStartPosition.y, hs.rightHandStartPosition.z,
+				hs.rightHandForearmStubPosition.x, hs.rightHandForearmStubPosition.y, hs.rightHandForearmStubPosition.z,
+				hs.rightHandWristRootPosition.x, hs.rightHandWristRootPosition.y, hs.rightHandWristRootPosition.z,
+				hs.rightHandThumb0Position.x, hs.rightHandThumb0Position.y, hs.rightHandThumb0Position.z,
+				hs.rightHandThumb1Position.x, hs.rightHandThumb1Position.y, hs.rightHandThumb1Position.z,
+				hs.rightHandThumb2Position.x, hs.rightHandThumb2Position.y, hs.rightHandThumb2Position.z,
+				hs.rightHandThumb3Position.x, hs.rightHandThumb3Position.y, hs.rightHandThumb3Position.z,
+				hs.rightHandThumbTipPosition.x, hs.rightHandThumbTipPosition.y, hs.rightHandThumbTipPosition.z,
+				hs.rightHandIndex1Position.x, hs.rightHandIndex1Position.y, hs.rightHandIndex1Position.z,
+				hs.rightHandIndex2Position.x, hs.rightHandIndex2Position.y, hs.rightHandIndex2Position.z,
+				hs.rightHandIndex3Position.x, hs.rightHandIndex3Position.y, hs.rightHandIndex3Position.z,
+				hs.rightHandIndexTipPosition.x, hs.rightHandIndexTipPosition.y, hs.rightHandIndexTipPosition.z,
+				hs.rightHandMiddle1Position.x, hs.rightHandMiddle1Position.y, hs.rightHandMiddle1Position.z,
+				hs.rightHandMiddle2Position.x, hs.rightHandMiddle2Position.y, hs.rightHandMiddle2Position.z,
+				hs.rightHandMiddle3Position.x, hs.rightHandMiddle3Position.y, hs.rightHandMiddle3Position.z,
+				hs.rightHandMiddleTipPosition.x, hs.rightHandMiddleTipPosition.y, hs.rightHandMiddleTipPosition.z,
+				hs.rightHandRing1Position.x, hs.rightHandRing1Position.y, hs.rightHandRing1Position.z,
+				hs.rightHandRing2Position.x, hs.rightHandRing2Position.y, hs.rightHandRing2Position.z,
+				hs.rightHandRing3Position.x, hs.rightHandRing3Position.y, hs.rightHandRing3Position.z,
+				hs.rightHandRingTipPosition.x, hs.rightHandRingTipPosition.y, hs.rightHandRingTipPosition.z,
+				hs.rightHandPinky0Position.x, hs.rightHandPinky0Position.y, hs.rightHandPinky0Position.z,
+				hs.rightHandPinky1Position.x, hs.rightHandPinky1Position.y, hs.rightHandPinky1Position.z,
+				hs.rightHandPinky2Position.x, hs.rightHandPinky2Position.y, hs.rightHandPinky2Position.z,
+				hs.rightHandPinky3Position.x, hs.rightHandPinky3Position.y, hs.rightHandPinky3Position.z,
+				hs.rightHandPinkyTipPosition.x, hs.rightHandPinkyTipPosition.y, hs.rightHandPinkyTipPosition.z
+			};
 
-			GestureID = gestures[maxIndex];
+				//Debug.Log(ps.Length);
 
-			outputTensor.Dispose();
-			inputTensor.Dispose();
+
+				TensorShape ts = new TensorShape(1, ps.Length);
+
+				TensorFloat inputTensor = new TensorFloat(ts, ps);
+				oneHandEngine.Execute(inputTensor);
+				TensorFloat outputTensor = oneHandEngine.PeekOutput() as TensorFloat;
+
+				outputTensor.MakeReadable();
+				//outputTensor.PrintDataPart(8);
+				float[] logits = new float[outputTensor.shape[1]];
+
+				for (int i = 0; i < logits.Length; i++)
+				{
+					logits[i] = outputTensor[i];
+				}
+
+				float[] probabilities = Softmax(logits);
+
+				string probLog = "";
+				for (int i = 0; i < probabilities.Length; i++)
+				{
+					probLog += probabilities[i] + "\n";
+				}
+
+				//Debug.Log(probLog);
+
+				int maxIndex = 0;
+				float maxVal = float.MinValue;
+				for (int i = 0; i < probabilities.Length; i++)
+				{
+					if (outputTensor[i] > maxVal)
+					{
+						maxVal = outputTensor[i];
+						maxIndex = i;
+					}
+				}
+
+				Debug.Log(oneHandGestures[maxIndex] + " " + probabilities[maxIndex]);
+
+				GestureID = oneHandGestures[maxIndex];
+				outputTensor.Dispose();
+			}
 		}
 	}
 
@@ -145,5 +231,27 @@ public class Inference : MonoBehaviour
 		var softmaxValues = expValues.Select(x => x / sumExp).ToArray();
 
 		return softmaxValues;
+	}
+
+	private bool HandsAreClose()
+	{
+		return Vector3.SqrMagnitude(leftHandSkeleton.gameObject.transform.position - rightHandSkeleton.gameObject.transform.position) < 0.1f;
+	}
+
+	private bool HandIsNearHMD(OVRSkeleton hand)
+	{
+		return Vector3.SqrMagnitude(hand.gameObject.transform.position - hmdTransform.position) < 0.15f;
+	}
+
+	private bool HandIsFarHMD(OVRSkeleton hand)
+	{
+		return Vector3.SqrMagnitude(hand.gameObject.transform.position - hmdTransform.position) > 0.2f;
+
+	}
+
+	public void OnApplicationQuit()
+	{
+		oneHandEngine.Dispose();
+		twoHandEngine.Dispose();
 	}
 }
