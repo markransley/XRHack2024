@@ -1,0 +1,33 @@
+ManifestFileVersion: 0
+CRC: 2465266865
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ee5a376e1c593714063c3b7e86b2fb9e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: be7639be23fe5926948019d5fd0bc22f
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: ee5a376e1c593714063c3b7e86b2fb9e
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: 2b76bcf034ab49e4a8cd30239a716460, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f3fe6e38ac2d4c22b04340d6eda2a47e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3863570e7e6387a40ae4f323d83291e5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 60e5406209e5ed147bb02ed71f9c40f3, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Resources/OVRPlatformToolSettings.asset
+- Assets/Resources/OVRBuildConfig.asset
+- Assets/Resources/MetaXRAcousticSettings.asset
+- Assets/Resources/MetaXRAcousticMaterialMapping.asset
+- Assets/Resources/MetaXRAudioSettings.asset
+- Assets/Resources/OculusRuntimeSettings.asset
+Dependencies: []
