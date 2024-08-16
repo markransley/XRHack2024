@@ -1726,6 +1726,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1108419882031822088}
     m_Modifications:
+    - target: {fileID: 187011111798627937, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 51b140b376831eb4996ee2445e2640a7, type: 2}
+    - target: {fileID: 187011111798627937, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 187011111798627937, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5280147581753773241, guid: 51b140b376831eb4996ee2445e2640a7, type: 2}
+    - target: {fileID: 187011111798627937, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929202906694913554, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.002
+      objectReference: {fileID: 0}
     - target: {fileID: 3555286985595321735, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.055
@@ -1766,6 +1786,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3810875983404527990, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947289179143720439, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 51b140b376831eb4996ee2445e2640a7, type: 2}
+    - target: {fileID: 4947289179143720439, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947289179143720439, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5280147581753773241, guid: 51b140b376831eb4996ee2445e2640a7, type: 2}
+    - target: {fileID: 4947289179143720439, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500872640094453033, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
+      propertyPath: _whenRelease.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: OnboardingScene1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056668423466223344, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8337451647545521870, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
       propertyPath: m_Name
       value: WelcomeMenu
@@ -1776,7 +1824,7 @@ PrefabInstance:
       objectReference: {fileID: 4919022600373772418}
     - target: {fileID: 9038359345897799583, guid: d94d2eb3cf82251498ff6cc36c0b55ba, type: 3}
       propertyPath: distanceFromHeadset
-      value: 0.7
+      value: 0.55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

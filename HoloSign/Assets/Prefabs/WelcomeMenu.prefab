@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 235109507326040213}
   - component: {fileID: 1516301474926720268}
   - component: {fileID: 8684209428841747715}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1e-14, y: -0.093}
+  m_AnchoredPosition: {x: 0, y: -0.093}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!33 &8470442571808112980
@@ -553,7 +553,7 @@ MonoBehaviour:
   _editor: {fileID: 3714630782216130695}
   _width: 0.34
   _height: 0.5
-  _color: {r: 0.9411765, g: 0.9411765, b: 0.9529412, a: 0.8156863}
+  _color: {r: 0.9411765, g: 0.9411765, b: 0.9529412, a: 0.11372549}
   _borderColor: {r: 0.3019608, g: 0.29411766, b: 0.28235295, a: 0.31764707}
   _radiusTopLeft: 0.02
   _radiusTopRight: 0.015
@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 5599637556774281672}
   - component: {fileID: 4997128768750010708}
   - component: {fileID: 4947289179143720439}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1186,7 +1186,7 @@ GameObject:
   - component: {fileID: 1359443385941835863}
   - component: {fileID: 2509113052399326564}
   - component: {fileID: 187011111798627937}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: WelcomeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1609,8 +1609,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1929202906694913554}
-  - {fileID: 3305213431488099458}
   - {fileID: 6931176421320684185}
+  - {fileID: 3305213431488099458}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7870377477916011954
@@ -1651,7 +1651,7 @@ GameObject:
   - component: {fileID: 6708617557103965087}
   - component: {fileID: 4220749319472268757}
   - component: {fileID: 5978406311377284247}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1676,7 +1676,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.00000021235, y: -0.09}
+  m_AnchoredPosition: {x: 0, y: -0.09}
   m_SizeDelta: {x: 1024, y: 1551.4443}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6708617557103965087
