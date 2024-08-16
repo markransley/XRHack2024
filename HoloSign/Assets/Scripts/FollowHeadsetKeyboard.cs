@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class PositionRelativeToHeadset : MonoBehaviour
+public class FollowHeadsetKeyboard : MonoBehaviour
 {
-	public OVRCameraRig ovrCameraRig; 
+	public OVRCameraRig ovrCameraRig;
 	public float distanceFromHeadset = 0.75f;
+	public float heightOffset = -5f; 
 
-	private Transform centerEyeAnchor; 
+	private Transform centerEyeAnchor;
 
 	void Start()
 	{
@@ -17,6 +18,7 @@ public class PositionRelativeToHeadset : MonoBehaviour
 		if (ovrCameraRig != null)
 		{
 			centerEyeAnchor = ovrCameraRig.centerEyeAnchor;
+			StartCoroutine(PositionPanelWhenReady());
 		}
 		else
 		{
@@ -24,18 +26,25 @@ public class PositionRelativeToHeadset : MonoBehaviour
 		}
 	}
 
-	void Update()
+	private System.Collections.IEnumerator PositionPanelWhenReady()
 	{
+		yield return new WaitForEndOfFrame();
+
 		if (centerEyeAnchor != null)
 		{
 			Vector3 eyePosition = centerEyeAnchor.position;
 			Vector3 eyeForward = centerEyeAnchor.forward;
 
+			// Calculate the new panel position with height offset
 			Vector3 panelPosition = eyePosition + eyeForward * distanceFromHeadset;
-
-			panelPosition.y = eyePosition.y;
+			panelPosition.y += heightOffset; // Apply the height offset
 
 			transform.position = panelPosition;
 		}
 	}
+
+	void Update()
+	{
+	}
 }
+
