@@ -5,8 +5,14 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
 	public AudioSource clickClip;
+	public AudioSource correctClip;
+	public AudioSource incorrectClip;
 
-    void Start()
+	public AudioSource celebrationClip;
+
+	public AudioSource ambientClip;
+
+	void Start()
     {
         
     }

@@ -515,9 +515,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5662409873843757736}
-  - component: {fileID: 6622874811922198337}
-  - component: {fileID: 2675771245351293867}
-  - component: {fileID: 4704459547634785607}
   m_Layer: 0
   m_Name: ProgressMenu
   m_TagString: Untagged
@@ -542,44 +539,6 @@ Transform:
   - {fileID: 7640529750955969889}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &6622874811922198337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6899915379595632215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4c1b38c49ffa449b585d54fcdc4a8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2675771245351293867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6899915379595632215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dee019fb06ee3e4bbc074b3beb0eac0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ovrCameraRig: {fileID: 0}
-  distanceFromHeadset: 0.7
---- !u!114 &4704459547634785607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6899915379595632215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0889f452acc5cc24896b106e9f7c3ab5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8303039954659927874
 GameObject:
   m_ObjectHideFlags: 0

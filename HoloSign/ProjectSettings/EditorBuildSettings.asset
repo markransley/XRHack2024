@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene_00.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/Scenes/ChessScene.unity
+    guid: 6f3dd80f94385b049bb89c647ea01c39
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 52851090bbd6d1e49acc9e69e725d3a5, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 44cd004662181f04a8ccba1bdc1a2e23, type: 2}

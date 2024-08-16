@@ -9,7 +9,8 @@ public class Inference : MonoBehaviour
 	public OVRSkeleton rightHandSkeleton;
 	public Transform hmdTransform;
 
-	public string GestureID;
+	public string gestureID;
+	public float confidence;
 
 	public ModelAsset oneHandModelAsset;
 	public ModelAsset twoHandModelAsset;
@@ -19,6 +20,24 @@ public class Inference : MonoBehaviour
 	private IWorker oneHandEngine;
 	private IWorker twoHandEngine;
 
+
+	public float aConfidence = 0.95f;
+	public float bConfidence = 0.95f;
+	public float cConfidence = 0.85f;
+	public float dConfidence = 0.95f;
+	public float eConfidence = 0.95f;
+	public float fConfidence = 0.95f;
+	public float gConfidence = 0.95f;
+	public float hConfidence = 0.95f;
+
+	public float oneConfidence = 0.3f;
+	public float twoConfidence = 0.3f;
+	public float threeConfidence = 0.3f;
+	public float fourConfidence = 0.3f;
+	public float fiveConfidence = 0.5f;
+	public float sixConfidence = 0.5f;
+	public float sevenConfidence = 0.3f;
+	public float eightConfidence = 0.3f;
 
 	string[] oneHandGestures = { "1", "2", "3", "4", "5", "6", "7", "8", "C" };
 	string[] twoHandGestures = { "A", "B", "D", "E", "F", "G", "H" };
@@ -135,10 +154,12 @@ public class Inference : MonoBehaviour
 					}
 				}
 
-				Debug.Log(twoHandGestures[maxIndex] + " " + probabilities[maxIndex]);
+				//Debug.Log(twoHandGestures[maxIndex] + " " + probabilities[maxIndex]);
 
-				GestureID = twoHandGestures[maxIndex];
+				gestureID = twoHandGestures[maxIndex];
+				confidence = probabilities[maxIndex];
 				outputTensor.Dispose();
+				return;
 			}
 
 			if (rightHandSkeleton.IsDataValid && HandIsNearHMD(rightHandSkeleton) && HandIsFarHMD(leftHandSkeleton))
@@ -211,12 +232,16 @@ public class Inference : MonoBehaviour
 					}
 				}
 
-				Debug.Log(oneHandGestures[maxIndex] + " " + probabilities[maxIndex]);
+				//Debug.Log(oneHandGestures[maxIndex] + " " + probabilities[maxIndex]);
 
-				GestureID = oneHandGestures[maxIndex];
+				gestureID = oneHandGestures[maxIndex];
+				confidence = probabilities[maxIndex];
 				outputTensor.Dispose();
+				return;
 			}
 		}
+
+		gestureID = "-1";
 	}
 
 	public static float[] Softmax(float[] logits)

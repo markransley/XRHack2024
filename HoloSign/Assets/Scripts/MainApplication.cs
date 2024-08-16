@@ -2,12 +2,20 @@ using Meta.WitAi;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainApplication : MonoBehaviour
 {
 	public static MainApplication Instance { get; private set; }
 
 	public AudioManager audioMananger;
+	public ImageFader imageFader;
+
+	public Transform hmdTransform;
+	public float distanceFromHeadset = 0.75f;
+
+	public Vector3 menuPosition;
+	public Quaternion menuOrientation;
 
 	// Title card
 	public GameObject welcomeCard;
@@ -16,6 +24,17 @@ public class MainApplication : MonoBehaviour
 	// Name entry card
 	public GameObject nameEntryCard;
 	public GameObject nameEntryCardInstance;
+
+	public GameObject onboardingOneCard;
+	public GameObject onboardingOneCardInstance;
+
+	// Onboarding two card
+	public GameObject onboardingTwoCard;
+	public GameObject onboardingTwoCardInstance;
+
+	public GameObject tutorialCard;
+	public GameObject tutorialCardInstance;
+
 	// Language selection card
 
 	// Lesson selection card
@@ -33,6 +52,10 @@ public class MainApplication : MonoBehaviour
 	// Chess game with quit / continue icon after 8 moves
 
 	// 
+
+	public GameObject currentActiveMenu;
+
+	public Inference inference;
 
 	private void Awake()
 	{
@@ -59,18 +82,52 @@ public class MainApplication : MonoBehaviour
 
 	private IEnumerator ShowWelcomeCardCoroutine()
 	{
-		yield return new WaitForSeconds(5);
+		yield return new WaitForSeconds(2);
 		welcomeCardInstance = Instantiate(welcomeCard);
+		welcomeCardInstance.transform.position = hmdTransform.position + hmdTransform.forward * distanceFromHeadset;
+		welcomeCardInstance.transform.rotation = Quaternion.LookRotation(hmdTransform.forward);
+		menuOrientation = welcomeCardInstance.transform.rotation;
+		menuPosition = welcomeCardInstance.transform.position;
+		currentActiveMenu = welcomeCardInstance;
+
+		imageFader.FadeInMenu(welcomeCardInstance);
 	}
 
 	public void GoToNameEntry()
 	{
-		if (welcomeCardInstance != null)
+		//imageFader.FadeOutMenu(welcomeCardInstance);
+		if (currentActiveMenu != null)
 		{
-			Destroy(welcomeCardInstance);
+			Destroy(currentActiveMenu);
 		}
 		nameEntryCardInstance = Instantiate(nameEntryCard);
+		nameEntryCardInstance.transform.position = menuPosition;
+		nameEntryCardInstance.transform.rotation = menuOrientation;
 	}
 
+	public void GoToTutorial()
+	{
+		imageFader.FadeOutMenu(currentActiveMenu);
+		Waiter();
+		if (currentActiveMenu != null)
+		{
+			Destroy(currentActiveMenu);
+		}
 
+		//onboardingOneCardInstance = Instantiate(onboardingOneCard);
+		tutorialCardInstance = Instantiate(tutorialCard);
+		tutorialCardInstance.transform.position = menuPosition;
+		tutorialCardInstance.transform.rotation = menuOrientation;
+		imageFader.FadeInMenu(tutorialCardInstance);
+	}
+
+	public void ActivateInference(bool activate)
+	{
+		inference.gameObject.SetActive(activate);
+	}
+
+	public IEnumerator Waiter()
+	{
+		yield return new WaitForSeconds(1.5f);
+	}
 }
