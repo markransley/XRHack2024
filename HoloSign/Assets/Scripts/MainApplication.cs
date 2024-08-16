@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainApplication : MonoBehaviour
 {
 	// Title card
-
+	public GameObject welcomeCard;
 	// Name entry card
 
 	// Language selection card

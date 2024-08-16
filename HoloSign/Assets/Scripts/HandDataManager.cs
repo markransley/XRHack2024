@@ -1,10 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Oculus;
-using TMPro;
-using Oculus.Interaction.Input;
-using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using static OVRPlugin;
 using System;
 
