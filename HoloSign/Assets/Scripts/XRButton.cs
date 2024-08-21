@@ -18,6 +18,31 @@ public class XRButton : MonoBehaviour
         
     }
 
+	public void GoToOnboardingTwoCard()
+	{
+		MainApplication.Instance.GoToOnboardingTwoCard();
+	}
+
+	public void GoToOnLessonCard()
+	{
+		MainApplication.Instance.GoToOnLessonCard();
+	}
+
+	public void GoToTutorial()
+	{
+		MainApplication.Instance.GoToTutorial();
+	}
+
+	public void GoGameDescription()
+	{
+		MainApplication.Instance.GoGameDescription();
+	}
+
+	public void GoChessGame()
+	{
+		MainApplication.Instance.GoChessGame();
+	}
+
 	public void OnClick()
 	{
 		if (MainApplication.Instance != null)

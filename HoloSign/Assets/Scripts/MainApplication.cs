@@ -1,7 +1,9 @@
 using Meta.WitAi;
+using Oculus.Interaction.Samples;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainApplication : MonoBehaviour
@@ -22,18 +24,24 @@ public class MainApplication : MonoBehaviour
 	public GameObject welcomeCardInstance;
 
 	// Name entry card
-	public GameObject nameEntryCard;
-	public GameObject nameEntryCardInstance;
-
 	public GameObject onboardingOneCard;
 	public GameObject onboardingOneCardInstance;
 
-	// Onboarding two card
+	//Language entry card
 	public GameObject onboardingTwoCard;
 	public GameObject onboardingTwoCardInstance;
 
+	// Lesson entry card
+	public GameObject lessonCard;
+	public GameObject lessonCardInstance;
+
+	// Tutorial card
 	public GameObject tutorialCard;
 	public GameObject tutorialCardInstance;
+
+	// Game description card
+	public GameObject gameDescriptionCard;
+	public GameObject gameDescriptionCardInstance;
 
 	// Language selection card
 
@@ -68,7 +76,6 @@ public class MainApplication : MonoBehaviour
 		Instance = this;
 	}
 
-
 	void Start()
     {
         StartCoroutine(ShowWelcomeCardCoroutine());
@@ -93,32 +100,92 @@ public class MainApplication : MonoBehaviour
 		imageFader.FadeInMenu(welcomeCardInstance);
 	}
 
-	public void GoToNameEntry()
+	public void GoToOnboardingOneCard()
 	{
-		//imageFader.FadeOutMenu(welcomeCardInstance);
+		imageFader.FadeOutMenu(welcomeCardInstance);
+		Waiter();
 		if (currentActiveMenu != null)
 		{
 			Destroy(currentActiveMenu);
 		}
-		nameEntryCardInstance = Instantiate(nameEntryCard);
-		nameEntryCardInstance.transform.position = menuPosition;
-		nameEntryCardInstance.transform.rotation = menuOrientation;
+		onboardingOneCardInstance = Instantiate(onboardingOneCard);
+		onboardingOneCardInstance.transform.position = menuPosition;
+		onboardingOneCardInstance.transform.rotation = menuOrientation;
+		imageFader.FadeInMenu(onboardingOneCardInstance);
+	}
+
+	public void GoToOnboardingTwoCard()
+	{
+		imageFader.FadeOutMenu(onboardingOneCardInstance);
+		Waiter();
+		if (currentActiveMenu != null)
+		{
+			Destroy(currentActiveMenu);
+		}
+		onboardingTwoCardInstance = Instantiate(onboardingTwoCard);
+		onboardingTwoCardInstance.transform.position = menuPosition;
+		onboardingTwoCardInstance.transform.rotation = menuOrientation;
+		imageFader.FadeInMenu(onboardingTwoCardInstance);
+	}
+
+	public void GoToOnLessonCard()
+	{
+		imageFader.FadeOutMenu(onboardingTwoCardInstance);
+		Waiter();
+		if (currentActiveMenu != null)
+		{
+			Destroy(currentActiveMenu);
+		}
+		lessonCardInstance = Instantiate(lessonCard);
+		lessonCardInstance.transform.position = menuPosition;
+		lessonCardInstance.transform.rotation = menuOrientation;
+		imageFader.FadeInMenu(lessonCardInstance);
 	}
 
 	public void GoToTutorial()
 	{
-		imageFader.FadeOutMenu(currentActiveMenu);
+		imageFader.FadeOutMenu(lessonCardInstance);
 		Waiter();
 		if (currentActiveMenu != null)
 		{
 			Destroy(currentActiveMenu);
 		}
 
-		//onboardingOneCardInstance = Instantiate(onboardingOneCard);
 		tutorialCardInstance = Instantiate(tutorialCard);
 		tutorialCardInstance.transform.position = menuPosition;
 		tutorialCardInstance.transform.rotation = menuOrientation;
 		imageFader.FadeInMenu(tutorialCardInstance);
+	}
+
+	public void GoGameDescription()
+	{
+		imageFader.FadeOutMenu(tutorialCardInstance);
+		Waiter();
+		if (currentActiveMenu != null)
+		{
+			Destroy(currentActiveMenu);
+		}
+
+		gameDescriptionCardInstance = Instantiate(gameDescriptionCard);
+		gameDescriptionCardInstance.transform.position = menuPosition;
+		gameDescriptionCardInstance.transform.rotation = menuOrientation;
+		imageFader.FadeInMenu(gameDescriptionCardInstance);
+	}
+
+	public void GoChessGame()
+	{
+		imageFader.FadeOutMenu(gameDescriptionCardInstance);
+		Waiter();
+		if (currentActiveMenu != null)
+		{
+			Destroy(currentActiveMenu);
+		}
+
+
+		//gameDescriptionCardInstance = Instantiate(gameDescriptionCard);
+		//gameDescriptionCardInstance.transform.position = menuPosition;
+		//gameDescriptionCardInstance.transform.rotation = menuOrientation;
+		//imageFader.FadeInMenu(gameDescriptionCardInstance);
 	}
 
 	public void ActivateInference(bool activate)

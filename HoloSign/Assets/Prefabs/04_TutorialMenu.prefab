@@ -2399,7 +2399,7 @@ GameObject:
   - component: {fileID: 3516207312197313856}
   - component: {fileID: 8955936686483464922}
   m_Layer: 0
-  m_Name: 02_TutorialMenu
+  m_Name: 04_TutorialMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2804,6 +2804,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 275273684391903643, guid: a3af057c5767cdb4297be3353e0daa25, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 634696472449427234, guid: a3af057c5767cdb4297be3353e0daa25, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
