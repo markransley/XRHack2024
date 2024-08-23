@@ -55,11 +55,13 @@ public class ImageFader : MonoBehaviour
 		image.color = color;  // Ensure the image reaches the final alpha
 		if (endAlpha == 0)
 		{
-			image.gameObject.SetActive(false);
+			image.gameObject.transform.parent.gameObject.SetActive(false);
+			//image.gameObject.SetActive(false);
 		}
 		else
 		{
-			image.gameObject.SetActive(true);
+			image.gameObject.transform.parent.gameObject.SetActive(true);
+			//image.gameObject.SetActive(true);
 		}
 	}
 }

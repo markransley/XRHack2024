@@ -43,6 +43,10 @@ public class MainApplication : MonoBehaviour
 	public GameObject gameDescriptionCard;
 	public GameObject gameDescriptionCardInstance;
 
+	// Chess game prefab
+	public GameObject chessGamePrefab;
+	public GameObject chessGamePrefabInstance;
+
 	// Language selection card
 
 	// Lesson selection card
@@ -181,11 +185,10 @@ public class MainApplication : MonoBehaviour
 			Destroy(currentActiveMenu);
 		}
 
-
-		//gameDescriptionCardInstance = Instantiate(gameDescriptionCard);
-		//gameDescriptionCardInstance.transform.position = menuPosition;
-		//gameDescriptionCardInstance.transform.rotation = menuOrientation;
-		//imageFader.FadeInMenu(gameDescriptionCardInstance);
+		chessGamePrefabInstance = Instantiate(chessGamePrefab);
+		chessGamePrefabInstance.transform.position = menuPosition;
+		chessGamePrefabInstance.transform.rotation = menuOrientation;
+		imageFader.FadeInMenu(chessGamePrefabInstance);
 	}
 
 	public void ActivateInference(bool activate)

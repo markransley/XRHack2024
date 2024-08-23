@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
 	public AudioSource celebrationClip;
 
 	public AudioSource ambientClip;
+	public AudioSource chessClip;
 
 	private void Awake()
 	{
@@ -30,8 +31,13 @@ public class AudioManager : MonoBehaviour
         ambientClip.Play();
 	}
 
-    // Update is called once per frame
-    void Update()
+	public void PlayChessScene()
+	{
+		chessClip.Play();
+	}
+
+	// Update is called once per frame
+	void Update()
     {
         
     }

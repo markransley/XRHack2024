@@ -3132,6 +3132,34 @@ PrefabInstance:
       propertyPath: m_text
       value: Play
       objectReference: {fileID: 0}
+    - target: {fileID: 3259459698104820959, guid: 9a102f886d7458947a67e46ce54c2d90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259459698104820959, guid: 9a102f886d7458947a67e46ce54c2d90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259459698104820959, guid: 9a102f886d7458947a67e46ce54c2d90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 292086381238908482}
+    - target: {fileID: 3259459698104820959, guid: 9a102f886d7458947a67e46ce54c2d90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259459698104820959, guid: 9a102f886d7458947a67e46ce54c2d90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: GoGameDescription
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259459698104820959, guid: 9a102f886d7458947a67e46ce54c2d90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: XRButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259459698104820959, guid: 9a102f886d7458947a67e46ce54c2d90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3962259779064364116, guid: 9a102f886d7458947a67e46ce54c2d90, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
