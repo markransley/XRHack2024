@@ -56,6 +56,7 @@ public class Inference : MonoBehaviour
 		{
 			HandSerializationNode hs = PoseSerializer.SerializePose(leftHandSkeleton, rightHandSkeleton);
 
+			//Debug.Log(hs.rightthu);
 
 			if (leftHandSkeleton.IsDataValid && rightHandSkeleton.IsDataValid && HandIsNearHMD(rightHandSkeleton) && HandsAreClose())
 			{

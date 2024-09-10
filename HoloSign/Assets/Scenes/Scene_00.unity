@@ -2492,7 +2492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &154512167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2500,7 +2500,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154512166}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 411ec6c9c33485f4583af063bc8849b7, type: 3}
   m_Name: 
@@ -22490,8 +22490,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandSkeleton: {fileID: 907300621}
   rightHandSkeleton: {fileID: 510875909}
-  leftHand: {fileID: 907300622}
-  rightHand: {fileID: 510875910}
   GestureID: 
 --- !u!4 &1987347349
 Transform:
