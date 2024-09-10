@@ -891,7 +891,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Let''s part!
+  m_text: 'Let''s start!
 
 '
   m_isRightToLeft: 0

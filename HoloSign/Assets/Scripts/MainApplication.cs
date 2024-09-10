@@ -15,6 +15,8 @@ public class MainApplication : MonoBehaviour
 
 	public Transform hmdTransform;
 	public float distanceFromHeadset = 0.75f;
+	public OVRVirtualKeyboard keyboard;
+
 
 	public Vector3 menuPosition;
 	public Quaternion menuOrientation;
@@ -78,6 +80,8 @@ public class MainApplication : MonoBehaviour
 		}
 
 		Instance = this;
+		keyboard.gameObject.SetActive(false);
+
 	}
 
 	void Start()
@@ -117,16 +121,20 @@ public class MainApplication : MonoBehaviour
 		onboardingOneCardInstance.transform.rotation = menuOrientation;
 		currentActiveMenu = onboardingOneCardInstance;
 		imageFader.FadeInMenu(onboardingOneCardInstance);
+		keyboard.GetComponent<OVRVirtualKeyboardInputFieldTextHandler>().InputField = onboardingOneCardInstance.GetComponentInChildren<InputField>();
+		keyboard.gameObject.SetActive(true);
 	}
 
 	public void GoToOnboardingTwoCard()
 	{
+		keyboard.gameObject.SetActive(false);
 		imageFader.FadeOutMenu(onboardingOneCardInstance);
 		Waiter();
 		if (currentActiveMenu != null)
 		{
 			Destroy(currentActiveMenu);
 		}
+
 		onboardingTwoCardInstance = Instantiate(onboardingTwoCard);
 		onboardingTwoCardInstance.transform.position = menuPosition;
 		onboardingTwoCardInstance.transform.rotation = menuOrientation;
