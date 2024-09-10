@@ -48,20 +48,24 @@ public class ImageFader : MonoBehaviour
 		for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / fadeDuration)
 		{
 			color.a = Mathf.Lerp(startAlpha, endAlpha, t);
-			image.color = color;
+			if (image != null)
+				image.color = color;
 			yield return null;
 		}
 		color.a = endAlpha;
-		image.color = color;  // Ensure the image reaches the final alpha
+		if (image != null)
+			image.color = color;  // Ensure the image reaches the final alpha
 		if (endAlpha == 0)
 		{
-			image.gameObject.transform.parent.gameObject.SetActive(false);
-			//image.gameObject.SetActive(false);
+			//image.gameObject.transform.parent.gameObject.SetActive(false);
+			if (image != null)
+				image.gameObject.SetActive(false);
 		}
 		else
 		{
-			image.gameObject.transform.parent.gameObject.SetActive(true);
-			//image.gameObject.SetActive(true);
+			//image.gameObject.transform.parent.gameObject.SetActive(true);
+			if (image != null)
+				image.gameObject.SetActive(true);
 		}
 	}
 }

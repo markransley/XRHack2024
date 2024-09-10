@@ -115,6 +115,7 @@ public class MainApplication : MonoBehaviour
 		onboardingOneCardInstance = Instantiate(onboardingOneCard);
 		onboardingOneCardInstance.transform.position = menuPosition;
 		onboardingOneCardInstance.transform.rotation = menuOrientation;
+		currentActiveMenu = onboardingOneCardInstance;
 		imageFader.FadeInMenu(onboardingOneCardInstance);
 	}
 
@@ -129,6 +130,7 @@ public class MainApplication : MonoBehaviour
 		onboardingTwoCardInstance = Instantiate(onboardingTwoCard);
 		onboardingTwoCardInstance.transform.position = menuPosition;
 		onboardingTwoCardInstance.transform.rotation = menuOrientation;
+		currentActiveMenu = onboardingTwoCardInstance;
 		imageFader.FadeInMenu(onboardingTwoCardInstance);
 	}
 
@@ -143,6 +145,7 @@ public class MainApplication : MonoBehaviour
 		lessonCardInstance = Instantiate(lessonCard);
 		lessonCardInstance.transform.position = menuPosition;
 		lessonCardInstance.transform.rotation = menuOrientation;
+		currentActiveMenu = lessonCardInstance;
 		imageFader.FadeInMenu(lessonCardInstance);
 	}
 
@@ -158,6 +161,7 @@ public class MainApplication : MonoBehaviour
 		tutorialCardInstance = Instantiate(tutorialCard);
 		tutorialCardInstance.transform.position = menuPosition;
 		tutorialCardInstance.transform.rotation = menuOrientation;
+		currentActiveMenu = tutorialCardInstance;
 		imageFader.FadeInMenu(tutorialCardInstance);
 	}
 
@@ -173,6 +177,7 @@ public class MainApplication : MonoBehaviour
 		gameDescriptionCardInstance = Instantiate(gameDescriptionCard);
 		gameDescriptionCardInstance.transform.position = menuPosition;
 		gameDescriptionCardInstance.transform.rotation = menuOrientation;
+		currentActiveMenu = gameDescriptionCardInstance;
 		imageFader.FadeInMenu(gameDescriptionCardInstance);
 	}
 
