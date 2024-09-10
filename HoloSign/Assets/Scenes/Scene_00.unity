@@ -2314,7 +2314,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154512166}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 411ec6c9c33485f4583af063bc8849b7, type: 3}
   m_Name: 
@@ -4993,7 +4993,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e3ebe8bfe6bcb00469daba91adc0ad07, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -12563,7 +12563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1246054951
 Transform:
   m_ObjectHideFlags: 0
@@ -17044,7 +17044,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b079d3a00dfd6e4498f002d01441b8f8, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -18428,7 +18428,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 688335803e511a5419191a39c9132c5f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -19908,7 +19908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1987347348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19921,8 +19921,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effe8bd9c9304424cb920377fee8cf9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftHandSkeleton: {fileID: 0}
-  rightHandSkeleton: {fileID: 0}
+  leftHandSkeleton: {fileID: 907300621}
+  rightHandSkeleton: {fileID: 510875909}
+  leftHand: {fileID: 907300622}
+  rightHand: {fileID: 510875910}
   GestureID: 
 --- !u!4 &1987347349
 Transform:
