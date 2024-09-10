@@ -10,7 +10,8 @@ public class WelcomeCard : MonoBehaviour
 	{
 		startButton.onClick = () =>
 		{
-			MainApplication.Instance.GoToTutorial();
+			MainApplication.Instance.GoToOnboardingOneCard();
+			AudioManager.Instance.PlayAmbientAudio();
 		};
 	}
 }
